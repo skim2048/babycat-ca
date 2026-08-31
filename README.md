@@ -9,6 +9,7 @@ Babycat의 제조사 CA 도구를 담는 저장소이다. 공개 저장소이므
 |`provision-device.sh`|Root CA 생성(`init`), Device CA 발급·전송(`issue`)|
 |`cp-rootcrt.sh`|Root CA 인증서를 mewly 앱 리소스로 복사|
 |`provision/`|`--to` 없이 발급한 결과의 임시 보관처. 형상 관리에서 제외한다|
+|`ledger.example.md`|발급 대장의 서식. 실제 대장은 저장소 밖에 둔다(§3.4)|
 
 Root CA 개인키는 이 저장소에 두지 않는다. 기본 위치는 `~/.babycat-ca/`이며 `ROOT_DIR` 환경 변수로 바꿀 수 있다.
 
@@ -52,7 +53,7 @@ Root CA 개인키는 이 저장소에 두지 않는다. 기본 위치는 `~/.bab
 
 ### 3.4 발급 대장
 
-발급 대장(시리얼, 보드, 주소, 날짜)은 이 저장소에 두지 않고 수동으로 관리한다. 시리얼·호스트명·내부 주소가 공개되는 것을 막기 위함이다. 시리얼은 재사용하지 않으며, 재발급 시 새 일련번호를 쓰고 이전 기록에 사유를 남긴다. 보드에서 시리얼을 확인하는 명령: `openssl x509 -in data/caddy/caddy/pki/authorities/local/root.crt -noout -subject`
+발급 대장(시리얼, 보드, 주소, 날짜)은 이 저장소에 두지 않고 수동으로 관리한다. 서식은 `ledger.example.md`를 따른다. 시리얼·호스트명·내부 주소가 공개되는 것을 막기 위함이다. 시리얼은 재사용하지 않으며, 재발급 시 새 일련번호를 쓰고 이전 기록에 사유를 남긴다. 보드에서 시리얼을 확인하는 명령: `openssl x509 -in data/caddy/caddy/pki/authorities/local/root.crt -noout -subject`
 
 ## 4. 키 보관과 사고 대응
 
